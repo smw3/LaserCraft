@@ -1,14 +1,14 @@
-package net.sheephaven.core.client;
+package lasercraft.core;
 
 import java.io.File;
 import java.io.IOException;
 
+
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.sheephaven.core.SheephavenProxy;
 
-public class ClientProxy extends SheephavenProxy {
+public class LaserCraftClientProxy extends LaserCraftProxy {
 
-	public ClientProxy() {
+	public LaserCraftClientProxy() {
 		// TODO Auto-generated constructor stub
 	}
 	

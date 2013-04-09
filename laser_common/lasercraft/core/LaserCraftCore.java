@@ -1,10 +1,5 @@
-package net.sheephaven.core;
+package lasercraft.core;
 
-import lasercraft.core.LaserBlock;
-import lasercraft.core.LaserBlockItem;
-import lasercraft.core.LaserBlockItemRenderer;
-import lasercraft.core.LaserBlockTileEntity;
-import lasercraft.core.LaserBlockTileEntityRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -15,6 +10,9 @@ import net.minecraft.src.BaseMod;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import net.sheephaven.core.CommandSheepHaven;
+import net.sheephaven.core.TestBlock;
+import net.sheephaven.core.TestBlockItem;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -31,23 +29,23 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "SheepHavenCore", name = "SheepHavenCore", version = "0.0.0")
+@Mod(modid = "LaserCraft", name = "LaserCraft", version = "0.1.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
-public class SheepHavenCore extends BaseMod {
+public class LaserCraftCore extends BaseMod {
 	
 	public final static Block TestBlock = new TestBlock(501,Material.ground);
 	public final static Block LaserBlock = new LaserBlock(503,Material.ground);
 	
-	public static int modelID;
+	public static int LaserBlockModelID;
 	
 	@SidedProxy(clientSide="net.sheephaven.core.client.ClientProxy",
 			serverSide="net.sheephaven.core.SheephavenProxy")
-	public static SheephavenProxy proxy;
+	public static LaserCraftProxy proxy;
 
 	// The instance of your mod that Forge uses.
 	@Instance("SheepHavenCore")
-	public static SheepHavenCore instance;
+	public static LaserCraftCore instance;
 
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
@@ -66,7 +64,7 @@ public class SheepHavenCore extends BaseMod {
 		GameRegistry.registerBlock(TestBlock, TestBlockItem.class, "TestBlock");
 		
 		// Laser
-		modelID = ModLoader.getUniqueBlockModelID(this, true);
+		LaserBlockModelID = ModLoader.getUniqueBlockModelID(this, true);
 		//LanguageRegistry.addName(LaserBlock,"LaserBlock");
 		ModLoader.registerTileEntity(LaserBlockTileEntity.class, "LaserBlock",new LaserBlockTileEntityRenderer() );
 		GameRegistry.registerBlock(LaserBlock,LaserBlockItem.class,"LaserBlock");
@@ -100,8 +98,8 @@ public class SheepHavenCore extends BaseMod {
 	
 	@Override
 	public String getVersion() {
-		// TODO Auto-generated method stub
-		return "0.1";
+	    Mod A = LaserCraftCore.class.getAnnotation(Mod.class);
+		return A.version();
 	}
 
 	@Override

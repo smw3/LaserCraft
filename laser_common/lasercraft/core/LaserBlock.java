@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.sheephaven.core.SheepHavenCore;
 
 public class LaserBlock extends BlockContainer {
 	
@@ -23,22 +22,18 @@ public class LaserBlock extends BlockContainer {
 		setStepSound(Block.soundGlassFootstep);
 		setUnlocalizedName("LaserBlock");
 		setCreativeTab(CreativeTabs.tabBlock);
-		//this.setRequiresSelfNotify(); // Important?
 	}
-	//public int idDropped() { // In case the block is not supposed to drop itself
-	//	return ;
-	//}
 	
-	public int quantityDropped(Random par1Random) { // In case the block is supposed to drop more than 1 block
+	public int quantityDropped(Random par1Random) {
 		return 1;
 	}
 	
 	public int damageDropped(int par1) {
-	return par1;
+	    return par1;
 	}
 	
 	public int getRenderType() {
-		return SheepHavenCore.modelID;
+		return LaserCraftCore.LaserBlockModelID;
 	}
 
 	public boolean isOpaqueCube() {

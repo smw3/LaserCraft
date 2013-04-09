@@ -3,6 +3,7 @@ package lasercraft.core;
 
 import org.lwjgl.opengl.GL11;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,6 +24,7 @@ public class LaserBlockTileEntityRenderer extends
 	 */
 	public void renderInventoryModelAt(LaserBlockTileEntity tile, double d,
             double d1, double d2, float f) {
+	    Minecraft.getMinecraft().renderEngine.bindTexture("/blocks/laser.png");
 	    renderLaserModel(tile, d, d1, d2);
 	    
 	}
