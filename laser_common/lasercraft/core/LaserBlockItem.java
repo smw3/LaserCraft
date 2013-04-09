@@ -11,7 +11,7 @@ public class LaserBlockItem extends ItemBlock {
 	}
 	
 	public String getItemNameIS(ItemStack itemstack) {
-		return "LaserBlock Item Test";
+		return "LaserBlock Item";
 	}
 	
 	public int getMetadata(int par1) {
