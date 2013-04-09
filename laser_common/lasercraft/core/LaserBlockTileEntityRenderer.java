@@ -42,7 +42,7 @@ public class LaserBlockTileEntityRenderer extends
 	public void renderModelAt(LaserBlockTileEntity tile, double x,
 			double y, double z, float f) {
 		
-	    this.bindTextureByName("/blocks/laser.png");
+	    Minecraft.getMinecraft().renderEngine.bindTexture("/blocks/laser.png");
 		renderLaserModel(tile,x,y,z);
 		
 		renderLaser(x,y,z,tile.getLaserLength(),tile.getLaserNuzzle(),tile.getYaw(),tile.getPitch());
@@ -74,7 +74,7 @@ public class LaserBlockTileEntityRenderer extends
      * Generates geometry for the laser and renders it 
      */
     private void renderLaser(double x, double y, double z, double laserLength, Vec3 LaserNuzzle, double Yaw, double Pitch) {
-        this.bindTextureByName("/effects/laser_red.png");
+        Minecraft.getMinecraft().renderEngine.bindTexture("/effects/laser_red.png");
         
         Tessellator tessellator = Tessellator.instance;
         

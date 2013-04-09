@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class LaserBlock extends BlockContainer {
 	
-	LaserBlockTileEntity TE = null;
+	TileEntity TE = null;
 	
 	public LaserBlock(int par1, Material par3Material) {
 		super(par1, par3Material);
@@ -81,4 +81,5 @@ public class LaserBlock extends BlockContainer {
 		return new LaserBlockTileEntity();
 	}
 
+	
 }

@@ -9,11 +9,12 @@ import net.minecraftforge.client.MinecraftForgeClient;
 public class LaserCraftClientProxy extends LaserCraftProxy {
 
 	public LaserCraftClientProxy() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
     @Override
     public void registerRenderers() {
-            MinecraftForgeClient.preloadTexture(BLOCK_PNG);
+            MinecraftForgeClient.preloadTexture(BLOCK_LASER_TEXTURE);
+            MinecraftForgeClient.preloadTexture(EFFECT_LASER_RED_TEXTURE);
     }
 }

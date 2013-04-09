@@ -26,6 +26,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -36,11 +37,12 @@ public class LaserCraftCore extends BaseMod {
 	
 	public final static Block TestBlock = new TestBlock(501,Material.ground);
 	public final static Block LaserBlock = new LaserBlock(503,Material.ground);
+	public final static Block LaserCommandBlock = new LaserCommandBlock(504,Material.ground);
 	
 	public static int LaserBlockModelID;
 	
-	@SidedProxy(clientSide="net.sheephaven.core.client.ClientProxy",
-			serverSide="net.sheephaven.core.SheephavenProxy")
+	@SidedProxy(clientSide="lasercraft.core.LaserCraftClientProxy",
+			serverSide="lasercraft.core.LaserCraftProxy")
 	public static LaserCraftProxy proxy;
 
 	// The instance of your mod that Forge uses.
@@ -57,7 +59,6 @@ public class LaserCraftCore extends BaseMod {
 	public void load(FMLInitializationEvent event) {
 		System.out.println("load Sheephaven");
 		
-		//registerBlock(net.minecraft.block.Block block, Class<? extends ItemBlock> itemclass, String name)
 		// TestBlock
 		LanguageRegistry.addName(TestBlock,"TestBlock");
 		MinecraftForge.setBlockHarvestLevel(TestBlock,"shovel",0);
@@ -65,11 +66,19 @@ public class LaserCraftCore extends BaseMod {
 		
 		// Laser
 		LaserBlockModelID = ModLoader.getUniqueBlockModelID(this, true);
-		//LanguageRegistry.addName(LaserBlock,"LaserBlock");
+		LanguageRegistry.addName(LaserBlock,"LaserBlock");
 		ModLoader.registerTileEntity(LaserBlockTileEntity.class, "LaserBlock",new LaserBlockTileEntityRenderer() );
 		GameRegistry.registerBlock(LaserBlock,LaserBlockItem.class,"LaserBlock");
-		//GameRegistry.registerBlock(LaserBlock);
 		RenderingRegistry.registerBlockHandler(new LaserBlockItemRenderer());
+		
+		// Laser Command block
+		LanguageRegistry.addName(LaserCommandBlock, "Laser Command Block");
+		ModLoader.registerTileEntity(LaserCommandBlockTileEntity.class, "LaserCommandBlock");
+		GameRegistry.registerBlock(LaserCommandBlock,LaserCommandBlockItem.class,"LaserCommandBlock");
+		
+		// Gui Handler
+		NetworkRegistry.instance().registerGuiHandler(this, new LaserCraftGuiHander());
+		
 		
 		proxy.registerRenderers();
 	}

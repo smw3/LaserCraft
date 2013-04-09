@@ -165,7 +165,7 @@ public class LaserBlockTileEntity extends TileEntity {
             for (int z = -10; z <= 10; z++) {
                 for (int y = 0; y <= 9; y++) {
                     if (getScanAtLocal(x, y, z) > 0
-                            && getScanAtLocal(x, y, z) != 502) {
+                            && getScanAtLocal(x, y, z) != 503) {
                         int was = getScanAtLocal(x, y, z);
                         System.out.println("("
                                 + FMLCommonHandler.instance()
@@ -174,7 +174,7 @@ public class LaserBlockTileEntity extends TileEntity {
                                 + " " + z);
                         updateScanAtLocal(x, y, z);
                         if (!(getScanAtLocal(x, y, z) > 0 && getScanAtLocal(x,
-                                y, z) != 502)) {
+                                y, z) != 503)) {
                             System.out.println("("
                                     + FMLCommonHandler.instance()
                                             .getEffectiveSide().name()
